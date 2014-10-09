@@ -9,11 +9,10 @@ class Capybara::Mechanize::Browser < Capybara::RackTest::Browser
   def_delegator :agent, :scheme_handlers
   def_delegator :agent, :scheme_handlers=
 
-  def initialize(driver, &block)
+  def initialize(driver)
     @agent = ::Mechanize.new
     @agent.redirect_ok = false
     @agent.user_agent = default_user_agent
-    yield(@agent) if block_given?
     super
   end
 
